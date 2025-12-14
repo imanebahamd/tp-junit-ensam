@@ -1,0 +1,112 @@
+=============================================
+EXERCICE 4 : RÉPONSES AUX QUESTIONS
+=============================================
+
+I. CONFIGURATION DE JaCoCo
+----------------------------
+1. Comment intégrer JaCoCo dans Maven ?
+   → Ajouter le plugin jacoco-maven-plugin dans pom.xml
+
+2. Quels plugins/dépendances JaCoCo ?
+   → Plugin: jacoco-maven-plugin (version 0.8.10)
+   → Aucune dépendance runtime nécessaire
+
+II. EXÉCUTION DES TESTS AVEC JaCoCo
+------------------------------------
+3. Comment exécuter tests avec JaCoCo ?
+   → Commande: mvn clean test jacoco:report
+
+4. Quels paramètres pour la collecte ?
+   → Dans <configuration> du plugin:
+     - destFile: target/jacoco.exec
+     - append: true
+     - excludes: **/*Test.class
+
+III. GÉNÉRATION DES RAPPORTS
+----------------------------
+5. Comment générer les rapports ?
+   → Automatique après mvn test jacoco:report
+
+6. Format et personnalisation ?
+   → Formats: HTML (par défaut), XML, CSV
+   → Personnalisation via <report> dans configuration
+
+IV. ANALYSE DES RAPPORTS JaCoCo
+--------------------------------
+7. Informations extraites :
+   - Couverture par instruction (INSTRUCTION)
+   - Couverture par branche (BRANCH)
+   - Couverture par ligne (LINE)
+   - Couverture par méthode (METHOD)
+   - Couverture par classe (CLASS)
+
+8. Identification code non couvert :
+   - Rouge: code non exécuté
+   - Jaune: partiellement couvert
+   - Vert: complètement couvert
+
+V. OBJECTIFS DE COUVERTURE
+---------------------------
+9. Objectifs définis :
+   - Instructions: ≥80%
+   - Branches: ≥70%
+   - Méthodes: ≥80%
+
+10. Ajustement selon besoins :
+    - Critique: ≥90% (santé, finance)
+    - Standard: 70-80% (applications métier)
+    - Acceptable: ≥50% (prototypes)
+
+VI. SCÉNARIOS POUR AMÉLIORER COUVERTURE
+----------------------------------------
+11. Scénarios à ajouter :
+    - Tests des conditions limites
+    - Tests des exceptions
+    - Tests des constructeurs alternatifs
+    - Tests des méthodes privées (via réflexion)
+
+12. JaCoCo identifie les parties non couvertes :
+    - Affiche les branches non prises
+    - Montre le code source coloré
+    - Donne le pourcentage par package/classe
+
+VII. EXEMPLES DE RAPPORTS JaCoCo
+---------------------------------
+13. Métriques fournies :
+    - Missed: éléments non couverts
+    - Covered: éléments couverts
+    - Total: total d'éléments
+    - Percentage: pourcentage couvert
+
+14. Sections clés du rapport :
+    - Résumé global
+    - Détails par package
+    - Détails par classe
+    - Code source annoté
+
+VIII. INTÉGRATION AVEC CI
+-------------------------
+15. Intégration Jenkins :
+    - Installer plugin JaCoCo
+    - Configurer post-build action
+    - Définir les seuils minimums
+
+IX. RÉFLEXION SUR COUVERTURE
+-----------------------------
+16. Qualité garantie par :
+    - Détection code mort
+    - Identification complexité cyclomatique
+    - Encouragement tests unitaires
+
+17. Bugs identifiables :
+    - Conditions jamais testées
+    - Branches logiques manquantes
+    - Cas limites ignorés
+
+X. AMÉLIORATIONS PROPOSÉES
+---------------------------
+18. Idées d'amélioration :
+    - Tests de mutation (Pitest)
+    - Intégration SonarQube
+    - Couverture différentielle
+    - Rapports historiques
